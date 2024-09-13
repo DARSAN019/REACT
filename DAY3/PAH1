@@ -1,0 +1,29 @@
+import React,{useState} from 'react';
+function DB(){
+    const[isVisible,setIsVisible]=useState(false);
+    const[clickCount,setClickCount]=useState(0);
+    const handleClick=()=>{
+        setClickCount(prevCount=>prevCount+1);
+        if(clickCount+1===4){
+            setIsVisible(prevIsVisible=>!prevIsVisible);
+            setClickCount(0);
+        }
+    };
+    return(
+        <div>
+            <h1>Dragon Ball</h1>
+            <h3>click once to command your saiyans!</h3>
+            <button onClick={handleClick}>
+                {isVisible ? 'Goku' : 'Super Saiyan'}  MODE
+            </button>
+            {isVisible && (
+                <div>
+                    <h1>Goku has awakened</h1>
+                    <h3>click tetra times to disable</h3>
+                </div>
+
+            )}
+        </div>
+    );
+}
+export default DB;
